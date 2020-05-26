@@ -1,6 +1,22 @@
 import React, {Fragment, useRef, useState} from 'react'
-import { Canvas, useFrame} from "react-three-fiber";
+import { Canvas, useFrame, extend, useThree} from "react-three-fiber";
 import { BackSide } from "three";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+
+extend({OrbitControls})
+
+const Controls = () => {
+
+    const {camera, gl} = useThree()
+    const orbitRef = useRef()
+
+    useFrame(() => {
+        orbitRef.current.update()
+    })
+
+    return (
+        <orbitControls ref={orbitRef} args={[camera, gl.domElement]}/>
+    )}
 
 const Box = (props) => {
 
@@ -33,7 +49,7 @@ const Box = (props) => {
 const FakeSphere = () => {
   return (
       <mesh>
-        <sphereBufferGeometry args={[1, 30, 30]} attach="geometry" />
+        <sphereBufferGeometry args={[0.7, 1, 1]} attach="geometry" />
         <meshBasicMaterial color={0xfff1ef} attach="material" />
       </mesh>
   )};
@@ -43,12 +59,15 @@ const App = () => {
       <Fragment>
         <Canvas>
           <FakeSphere/>
-          {/*<perspectiveCamera />*/}
+          <perspectiveCamera args={[45 , window.innerWidth / window.innerHeight, 1, 100]} position={[-1, 2, 3]}/>
           <pointLight position={[0, 0, 0]}/>
           <ambientLight intensity={0.9}/>
-          {/*<Box position={[0,0,0]} />*/}
+          {/*<Box position={[1,0,0]} />*/}
+          {/*<Box position={[0,1,0]} />*/}
+          {/*<Box position={[-1,0,0]} />*/}
+          <Controls/>
           <mesh>
-            <sphereBufferGeometry attach="geometry" args={[0, 0, 0]}/>
+            <sphereBufferGeometry attach="geometry" args={[10, 1, 1]}/>
             <meshStandardMaterial attach="material" color={0xd2452b} side={BackSide}/>
           </mesh>
         </Canvas>
