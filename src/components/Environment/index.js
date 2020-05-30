@@ -4,7 +4,7 @@ export default () => {
     return (
         <mesh>
             <sphereBufferGeometry attach="geometry" args={[100,10,10]}/>
-            <meshStandardMaterial attach="material" color='rgb(199, 197, 72)' side={1}/>
+            <meshStandardMaterial attach="material" color='rgba(21,18,19,0.88)' side={1}/>
         </mesh>
     );
 };

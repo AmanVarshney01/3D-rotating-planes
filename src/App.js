@@ -6,8 +6,8 @@ import Env from "./components/Environment"
 const Core = () => {
     return (
         <mesh>
-            <sphereBufferGeometry attach="geometry" args={[15, 32, 32]}/>
-            <meshBasicMaterial  attach="material" color="rgb(251, 255, 0)"/>
+            <circleBufferGeometry attach="geometry" args={[10, 32, 32]}/>
+            <meshBasicMaterial  attach="material" color="orange"/>
         </mesh>
     )
 }
