@@ -18,7 +18,7 @@ const App = () => {
         <Fragment>
             <Canvas camera={{ fov: 104, position: [0,0,70] }}>
                 <ambientLight/>
-                <pointLight color="orange"/>
+                <pointLight color="orange" intensity={10}/>
                 <Cubes/>
                 <Core/>
                 <Env/>
