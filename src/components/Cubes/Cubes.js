@@ -20,15 +20,14 @@ import Cube from "./Cube";
 //     )
 // }
 
-
-let nodesArray = [...new Array(100)]
-
 const Cubes = () => {
     const group = useRef();
 
     useFrame(() => {
         group.current.rotation.y += 0.005;
     });
+
+    let nodesArray = [...new Array(100)]
 
     return (
         <group ref={group}>
